@@ -1,0 +1,182 @@
+{% load static %}
+{% load static tailwind_tags %}
+{% load django_browser_reload %}
+
+{% load custom_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="shortcut icon" href="{% static 'assets/logos/logo3.png' %}" type="image/png">
+{% comment %} fonts {% endcomment %}
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Khula:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="theme-color" content="#f3e6d1">
+
+    <title>{% block title %}{% endblock title %} {% settings_value "PROJECT_TITLE" %}</title>
+    <meta name="description" 
+            content="{% block description %}Building websites that brings you business{% endblock description %}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        {% tailwind_css %}
+        <link rel="stylesheet" href="{% static "./css/index.css" %}">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+    {% block head_tags %}
+    {% endblock head_tags %}
+
+</head>
+<body   
+    style=" 
+            background-color: #f3e6d1;"
+    class=" tw-h-screen 
+            tw-w-full 
+            tw-flex">
+
+    <section 
+            style=" background-image: url('{% static 'assets/images/registration.png' %}');
+                    height: 100vh;
+                    width: 35%;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;">
+    </section>
+    <section style="background-color: #3c6b2a;
+                    width: 65%;"       
+            class=" tw-w-full tw-flex 
+                    tw-flex-col
+                    tw-place-content-center 
+                    tw-px-[10%]
+                    tw-p-4
+                    tw-gap-5
+                    tw-min-h-[100vh]
+                    tw-place-items-center
+                    max-md:tw-flex-col
+                    tw-overflow-hidden
+                    ">
+            
+            <div class="tw-w-3/4 tw-max-w-md tw-text-white">
+            
+            {% comment %} <img src="{% static 'assets/images/elogo.png' %}" 
+                 class="tw-mx-auto tw-mb-4 tw-text-center tw-h-auto tw-block" alt="Logo">
+            </img> {% endcomment %}
+            <img src="../assets/images/LOGO.png" alt="o" class="tw-h-12 tw-mt-8" />
+            <h2 style="font-family: 'Exo 2', sans-serif;" class="tw-text-center tw-text-2xl tw-font-bold tw-mb-6">CREATE NEW ACCOUNT</h2>
+        
+             <form
+                method="POST"
+                action="{% url "contact-us" %}"
+                onsubmit="return onSubmit(event)"
+                class="tw-flex tw-flex-col tw-gap-[5%] tw-h-full tw-mt-[5%]"
+            >
+                {% if errors %}
+                    <div class="error-container tw-m-2">{{errors}}</div>
+                {% endif %} 
+                {% csrf_token %}
+
+                <div
+                    class="tw-max-w-[550px] 
+                           tw-min-w-[450px] 
+                           max-md:tw-min-w-[300px] 
+                           tw-mt-4 
+                           tw-flex 
+                           tw-flex-col 
+                           tw-gap-3
+                           tw-text-base"
+                    style="font-family: 'Khula', sans-serif;"
+                >
+
+                <input 
+                    type="text" 
+                    name="name" 
+                    placeholder="Name" 
+                    maxlength="30"
+                    required
+                    style="padding-left: 5%;"
+                    class=" tw-w-full 
+                            tw-p-2
+                            tw-rounded-md
+                            tw-text-black" 
+                >
+                <input 
+                    type="email" 
+                    name="email" 
+                    placeholder="Email" 
+                    required
+                    style="padding-left: 5%;" 
+                    class=" tw-w-full 
+                            tw-p-2 
+                            tw-rounded-md
+                            tw-text-black" 
+                >
+                <input 
+                    type="date" 
+                    name="birthday" 
+                    placeholder="Birthday"
+                    required
+                    style="padding-left: 5%;" 
+                    class=" tw-w-full 
+                            tw-p-2 
+                            tw-rounded-md
+                            tw-placeholder-gray-500
+                            tw-text-black" 
+                >
+                <input 
+                    type="password" 
+                    name="password" 
+                    placeholder="Password"
+                    required
+                    style="padding-left: 5%;" 
+                    class=" tw-w-full 
+                            tw-p-2 
+                            tw-rounded-md
+                            tw-text-black" 
+                >
+                <input 
+                    type="password" 
+                    name="confirm_password" 
+                    placeholder="Confirm Password" 
+                    required
+                    style="padding-left: 5%;"
+                    class=" tw-w-full 
+                            tw-p-2 
+                            tw-rounded-md
+                            tw-text-black" 
+                >
+                <div class="tw-pt-3 tw-h-screen tw-flex tw-items-center tw-justify-center">
+                <button
+                    onmouseover="this.style.opacity='0.8'"
+                    onmouseout="this.style.opacity='1'"
+                    type="submit"
+                    style=" 
+                            background-color: #78a35d;
+                            color: #333333;
+                            padding: 10px 20px;
+                            margin: 8px 0;
+                            border: none;
+                            cursor: pointer;
+                            width: 40%;
+                            display: block;
+                            margin-left: auto;
+                            margin-right: auto;
+                            transition: all 0.2s ease-out;
+                            opacity: 100%;"
+
+                    class=" tw-font-bold
+                            tw-text-lg
+                            tw-rounded-lg
+                            tw-duration-300
+                            hover:tw--translate-y-2
+                        ">
+                    REGISTER
+                    {% comment %} <i class="bi bi-arrow-right"></i> {% endcomment %}
+                </button></div>

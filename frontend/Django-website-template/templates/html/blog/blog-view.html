@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Khula&family=Exo+2:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@heroicons/react/solid"></script>
+
+    <style>
+      input::placeholder {
+        color: black;
+        font-family: "Khula", sans-serif;
+      }
+
+      .font-khula {
+        font-family: "Khula", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen flex overflow-hidden font-khula bg-cover bg-center bg-fixed"
+    style="background-image: url('../assets/images/background.png');">
+
+    <div class="w-full md:w-[60%] bg-[#3c6b2a] flex items-center justify-center p-10">
+      <div class="w-full max-w-md text-white space-y-6">
+        <!-- Logo -->
+        <div class="flex justify-center mb-2">
+          <img src="../assets/images/LOGO.png" alt="Logo" class="h-16" />
+        </div>
+
+        <!-- Heading -->
+        <h2 class="text-3xl font-extrabold text-center font-['Exo_2'] tracking-wide">
+          LOG-IN ACCOUNT
+        </h2>
+
+        <!-- Register Link -->
+        <p class="text-center text-sm">
+          Don't have an account?
+          <a href="#" class="underline hover:text-green-300">Register here</a>
+        </p>
+
+        <!-- Form -->
+        <form method="POST" action="#" class="space-y-4 text-black">
+          <div class="relative">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              class="mt-6 w-full h-10 placeholder-[#333333] text-[#333333] px-4 rounded-md border border-black focus:outline-none focus:ring focus:ring-gray-300 text-sm leading-tight"
+              style="font-family: 'Khula', sans-serif"
+              required
+            />
+
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              class="mt-4 w-full h-10 placeholder-[#333333] text-[#333333] px-4 rounded-md border border-black focus:outline-none focus:ring focus:ring-gray-300 text-sm leading-tight"
+              style="font-family: 'Khula', sans-serif"
+              required
+            />
+          </div>
+
+          <button
+          type="submit"
+          class="w-1/2 mx-auto bg-[#78a35d] text-[#333333] font-semibold py-2 rounded-full underline hover:bg-green-100 block"
+        >
+          LOG IN
+        </button>
+
+        </form>
+
+        <!-- Terms -->
+        <p class="text-center text-sm mt-6">
+          <a href="#" class="underline hover:text-green-300">
+            Terms of use and Conditions
+          </a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

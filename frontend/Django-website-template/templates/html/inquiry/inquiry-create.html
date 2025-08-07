@@ -1,0 +1,124 @@
+
+{% extends "../html/base.html" %}
+{% load custom_tags %}
+{% comment %} {% extends1 "../html/base.html" %} {% endcomment %}
+{% load tz %}
+{% load static %}
+
+
+
+{% comment %} {% block head %}
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfTdsYpAAAAAE3ePEpkWUwh9sEf0dugErefYQxy"></script>
+{% endblock head %} {% endcomment %}
+
+
+
+
+   
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Khula&family=Exo+2:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        background-color: rgba(243, 230, 209, 0.85);
+      }
+
+      input::placeholder {
+        color: black;
+        font-family: "Khula", sans-serif;
+      }
+
+      .font-khula {
+        font-family: "Khula", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="flex items-center justify-center min-h-screen">
+    <!-- Login Container -->
+    <div
+      id="loginBox"
+      class="relative bg-[#3c6b2a] rounded-2xl shadow-xl w-full max-w-md p-10 space-y-6 h-[440px]"
+    >
+      <!-- Close Button -->
+      <button
+        class="absolute top-4 right-4 text-white text-2xl font-bold hover:text-green-200 focus:outline-none"
+        onclick="document.getElementById('loginBox').style.display='none';"
+      >
+        &times;
+      </button>
+
+      <!-- Logo -->
+      <div class="flex justify-center">
+        <img src="../assets/images/LOGO.png" alt="Logo" class="h-12 -mt-8" />
+      </div>
+
+      <!-- Heading -->
+      <h2
+        class="text-3xl font-extrabold text-center text-white"
+        style="font-family: 'Exo 2', sans-serif"
+      >
+        LOG IN
+      </h2>
+
+      <!-- Login Form -->
+      <form method="POST" action="#" class="space-y-3 text-black">
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          class="mt-6 w-full h-10 placeholder-[#333333] text-[#333333] px-4 rounded-md border border-black focus:outline-none focus:ring focus:ring-gray-300 text-sm leading-tight"
+          style="font-family: 'Khula', sans-serif"
+          required
+        />
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          class="w-full h-10 placeholder-[#333333] text-[#333333] px-4 rounded-md border border-black focus:outline-none focus:ring focus:ring-gray-300 text-sm leading-tight"
+          style="font-family: 'Khula', sans-serif"
+          required
+        />
+
+        <!-- Remember me and Forgot password (closer to password) -->
+        <div class="flex items-center justify-between text-sm mt-1">
+          <label class="flex items-center text-white font-khula">
+            <input type="checkbox" class="mr-2 accent-green-600" />
+            Remember me
+          </label>
+          <a href="#" class="text-white hover:underline font-khula"
+            >Forgot password?</a
+          >
+        </div>
+
+        <button
+          type="submit"
+          class="w-1/2 mx-auto bg-[#78a35d] text-[#333333] font-semibold py-2 rounded-full underline hover:bg-green-100 block"
+        >
+          LOG IN
+        </button>
+      </form>
+
+      <!-- Sign-up link -->
+      <p class="text-center text-sm text-white font-khula mb-4">
+        or
+        <a href="#" class="underline hover:text-green-200">
+          Sign Up
+        </a>
+      </p>
+    </div>
+  </body>
+
+
+
