@@ -1,0 +1,334 @@
+{% comment %} {% extends 'base.html' %}
+
+{% load tz %}
+{% load static %}
+
+{% load custom_tags %}
+
+
+{% block title %}Blogs - {% endblock title %}
+{% block description %}Contains list of all the published blogs{% endblock description %}
+
+{% block socialTitle %}Blogs from {% endblock socialTitle %}
+{% block socialDescription %}Contains list of all the published blogs{% endblock socialDescription %}
+{% block pageType %}article{% endblock pageType %} {% endcomment %}
+{% comment %} {% block pageLink %}{% endblock pageLink %} {% endcomment %}
+{% block pageImage %}{% endblock pageImage %}
+
+
+{% comment %} {% block content %}
+
+<div class="tw-flex tw-flex-col tw-h-full
+            tw-w-full  tw-place-items-center 
+            tw-p-3 tw-min-h-[100vh] md:tw-px-[15%]">
+
+    <h1 class="tw-w-full tw-mt-[5%] tw-text-3xl tw-font-medium tw-text-center">
+        Blogs
+    </h1>
+    
+
+    {% if blogs|length == 0 %}
+
+        <div class="tw-w-full tw-mt-[10%] tw-flex tw-flex-col tw-text-center tw-text-xl tw-place-items-center">
+            <p class="tw-text-xl">No blogs yet.</p> 
+        </div>
+
+    {% endif %}
+    <div class="tw-mt-[5%]"></div>
+    <div class="tw-w-full tw-max-w-[950px]">
+        {% for blog in blogs  %}
+            <div class="tw-flex tw-gap-5 tw-place-content-center tw-mt-2
+                        tw-place-items-center max-md:tw-flex-col">
+                {% if blog.thumbnail %}
+                    <div class="tw-max-w-[350px]">
+                        <img src="{{blog.thumbnail.url}}">
+                    </div>
+                {% endif %}
+                <a href="{% url 'get-blog' slug=blog.slug  %}" 
+                                            class="tw-text-md tw-w-full tw-h-full ">
+                    <div class="tw-text-3xl tw-w-full 
+                                max-md:tw-text-2xl tw-mt-2">
+                        <span>
+                            <h2>
+                                {{blog.title}}
+                            </h2>
+                        </span>
+                    
+                    </div>
+                    <div class="tw-mt-4 tw-mb-[2%] tw-w-full tw-p-2 tw-text-justify">
+                        {% if blog.meta_description %}
+                            {{blog.meta_description}} <span class="!tw-text-blue-500" style="color: #3495eb;">continue reading...</span>
+                        {% else %}
+                            {{blog.body|strip_html_tags|slice:":300"|safe}} <span class="!tw-text-blue-500" style="color: #3495eb;">continue reading...</span>
+                        {% endif %}
+                    </div>
+                    <div class="tw-text-sm tw-text-gray-500 tw-text-right">
+                        {% utc_to_local blog.datetime request.COOKIES.user_timezone %}
+                    </div>
+                </a>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+    {% if blogs.has_previous or blogs.has_next %}
+        <ul class="pagination">
+            {% if blogs.has_previous %}
+                <a class="page-item " href="?page={{ blogs.previous_page_number }}">
+                    <i class="bi bi-chevron-double-left"></i>
+                </a>
+            {% else %}
+                <li class="disabled page-item "><span class="page-link bi bi-chevron-double-left"></span></li>
+            {% endif %}
+            {% for i in page_range|default_if_none:blogs.paginator.get_elided_page_range  %}
+                {% if blogs.number == i %}
+                    <li class="active page-item"><span class="page-link">{{ i }}</span>
+                    </li>
+                {% else %}
+                    {% if i == blogs.paginator.ELLIPSIS %}
+                        <li class="page-item"><span class="page-link">{{ i }}</span></li>
+                    {% else %}
+                        <a class="page-item" href="?page={{ i }}">{{ i }}</a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% if blogs.has_next %}
+                <a class="page-item" href="?page={{ blogs.next_page_number }}">
+                    <i class="bi bi-chevron-double-right"></i>
+                </a>
+            {% else %}
+                <li class="disabled page-item"><span class="page-link bi bi-chevron-double-right"></span></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+
+</div>
+
+
+
+{% endblock content %} {% endcomment %}
+
+{% load static %}
+{% load static tailwind_tags %}
+{% load django_browser_reload %}
+
+{% load custom_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="shortcut icon" href="{% static 'assets/logos/logo3.png' %}" type="image/png">
+{% comment %} fonts {% endcomment %}
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Khula:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="theme-color" content="#f3e6d1">
+
+    <title>{% block title %}{% endblock title %} {% settings_value "PROJECT_TITLE" %}</title>
+    <meta name="description" 
+            content="{% block description %}Building websites that brings you business{% endblock description %}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        {% tailwind_css %}
+        <link rel="stylesheet" href="{% static "./css/index.css" %}">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+    {% block head_tags %}
+    {% endblock head_tags %}
+
+</head>
+<body   
+    style=" 
+            background-color: #f3e6d1;"
+    class=" tw-h-screen 
+            tw-w-full 
+            tw-flex">
+
+    <section 
+            style=" background-image: url('{% static 'assets/images/registration.png' %}');
+                    height: 100vh;
+                    width: 35%;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;">
+    </section>
+    <section style="background-color: #3c6b2a;
+                    width: 65%;"       
+            class=" tw-w-full tw-flex 
+                    tw-flex-col
+                    tw-place-content-center 
+                    tw-px-[10%]
+                    tw-p-4
+                    tw-gap-5
+                    tw-min-h-[100vh]
+                    tw-place-items-center
+                    max-md:tw-flex-col
+                    tw-overflow-hidden
+                    ">
+            
+            <div class="tw-w-3/4 tw-max-w-md tw-text-white">
+            
+            {% comment %} <img src="{% static 'assets/images/elogo.png' %}" 
+                 class="tw-mx-auto tw-mb-4 tw-text-center tw-h-auto tw-block" alt="Logo">
+            </img> {% endcomment %}
+            <img src="{% static 'assets/images/ecosteps.png' %}" alt="EcoSteps" class="tw-h-12 tw-mt-8" />
+            <h2 style="font-family: 'Exo 2', sans-serif;" class="tw-text-center tw-text-2xl tw-font-bold tw-mb-6">CREATE NEW ACCOUNT</h2>
+
+             <form
+                method="POST"
+                action="{% url "contact-us" %}"
+                onsubmit="return onSubmit(event)"
+                class="tw-flex tw-flex-col tw-gap-[5%] tw-h-full tw-mt-[5%]"
+            >
+                {% if errors %}
+                    <div class="error-container tw-m-2">{{errors}}</div>
+                {% endif %} 
+                {% csrf_token %}
+
+                <div
+                    class="tw-max-w-[550px] 
+                           tw-min-w-[450px] 
+                           max-md:tw-min-w-[300px] 
+                           tw-mt-4 
+                           tw-flex 
+                           tw-flex-col 
+                           tw-gap-3
+                           tw-text-base"
+                    style="font-family: 'Khula', sans-serif;"
+                >
+
+                <input 
+                    type="text" 
+                    name="name" 
+                    placeholder="Name" 
+                    maxlength="30"
+                    required
+                    style="padding-left: 5%;"
+                    class=" tw-w-full 
+                            tw-p-2
+                            tw-rounded-md
+                            tw-text-black" 
+                >
+                <input 
+                    type="email" 
+                    name="email" 
+                    placeholder="Email" 
+                    required
+                    style="padding-left: 5%;" 
+                    class=" tw-w-full 
+                            tw-p-2 
+                            tw-rounded-md
+                            tw-text-black" 
+                >
+                <input 
+                    type="date" 
+                    name="birthday" 
+                    placeholder="Birthday"
+                    required
+                    style="padding-left: 5%;" 
+                    class=" tw-w-full 
+                            tw-p-2 
+                            tw-rounded-md
+                            tw-placeholder-gray-500
+                            tw-text-black" 
+                >
+                <input 
+                    type="password" 
+                    name="password" 
+                    placeholder="Password"
+                    required
+                    style="padding-left: 5%;" 
+                    class=" tw-w-full 
+                            tw-p-2 
+                            tw-rounded-md
+                            tw-text-black" 
+                >
+                <input 
+                    type="password" 
+                    name="confirm_password" 
+                    placeholder="Confirm Password" 
+                    required
+                    style="padding-left: 5%;"
+                    class=" tw-w-full 
+                            tw-p-2 
+                            tw-rounded-md
+                            tw-text-black" 
+                >
+                <div class="tw-pt-3 tw-h-screen tw-flex tw-items-center tw-justify-center">
+                <button
+                    onmouseover="this.style.opacity='0.8'"
+                    onmouseout="this.style.opacity='1'"
+                    type="submit"
+                    style=" 
+                            background-color: #78a35d;
+                            color: #333333;
+                            padding: 10px 20px;
+                            margin: 8px 0;
+                            border: none;
+                            cursor: pointer;
+                            width: 40%;
+                            display: block;
+                            margin-left: auto;
+                            margin-right: auto;
+                            transition: all 0.2s ease-out;
+                            opacity: 100%;"
+
+                    class=" tw-font-bold
+                            tw-text-lg
+                            tw-rounded-lg
+                            tw-duration-300
+                            hover:tw--translate-y-2
+                        ">
+                    REGISTER
+                    {% comment %} <i class="bi bi-arrow-right"></i> {% endcomment %}
+                </button></div>
+
+                
+                    {% comment %} <!-- Name -->
+                    <div class="tw-flex tw-flex-col tw-gap-4">
+                        <div class="tw-flex tw-flex-col tw-gap-1">
+                            <div class="tw-text-gray-500"></div>
+                            <input
+                                type="text"
+                                class="input"
+                                name="name"
+                                maxlength="30"
+                                required
+                                value="{{data.name}}"
+                                placeholder="Name"
+                            />
+                        </div>
+                        <!-- Email -->
+                        <div class="tw-flex tw-flex-col tw-gap-1">
+                            <div class="tw-text-gray-500"></div>
+                            <input
+                                type="email"
+                                class="input"
+                                required
+                                name="email"
+                                maxlength="250"
+                                placeholder="Email"
+                                value="{{data.email}}"
+                                id="email"
+                            />
+                        </div>
+                    </div>                   
+
+                    <button
+                        type="submit"
+                        class="tw-transition-transform hover:tw-translate-x-2 tw-duration-[0.3s] tw-mt-5 tw-ml-auto"
+                    >
+                        <span>Submit</span>
+                    </button> {% endcomment %}
+                </div>
+            </form>
+
+    </section>
+</body>
