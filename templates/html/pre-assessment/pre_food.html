@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Food Habits</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <div class="max-w-xl mx-auto bg-white rounded-lg shadow-md p-8 mt-12">
+
+    <h1 class="text-3xl font-bold text-green-700 mb-6 text-center">Food Habits</h1>
+    <hr class="mb-8 border-gray-300" />
+
+    <form method="post" class="space-y-6">
+      {% csrf_token %}
+
+      <div>
+        <label for="meat_frequency" class="block text-gray-700 font-semibold mb-2">
+          How often do you eat meat?
+        </label>
+        <select id="meat_frequency" name="meat_frequency" required
+          class="w-full border border-gray-300 rounded-md p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+          <option value="" disabled selected>Select frequency</option>
+          <option>Rarely</option>
+          <option>1–2 times a week</option>
+          <option>3–4 times a week</option>
+          <option>Daily</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="processed_food_frequency" class="block text-gray-700 font-semibold mb-2">
+          How often do you eat processed or packaged food?
+        </label>
+        <select id="processed_food_frequency" name="processed_food_frequency" required
+          class="w-full border border-gray-300 rounded-md p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+          <option value="" disabled selected>Select frequency</option>
+          <option>Rarely</option>
+          <option>1–2 times a week</option>
+          <option>3–4 times a week</option>
+          <option>Daily</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="snacks" class="block text-gray-700 font-semibold mb-2">
+          Do you eat snacks/junk foods?
+        </label>
+        <select id="snacks" name="snacks" required
+          class="w-full border border-gray-300 rounded-md p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+          <option value="" disabled selected>Select an option</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="meal_frequency" class="block text-gray-700 font-semibold mb-2">
+          How many times do you eat junk foods in a week?
+        </label>
+        <select id="meal_frequency" name="meal_frequency" required
+          class="w-full border border-gray-300 rounded-md p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+          <option value="" disabled selected>Select frequency</option>
+          <option>1–2 times a week</option>
+          <option>3–4 times a week</option>
+          <option>5–6 times a week</option>
+          <option>Daily</option>
+        </select>
+      </div>
+
+      <div class="text-right">
+        <a href="{% url 'pre_elec' %}" 
+           class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-md transition">
+          Next →
+        </a>
+      </div>
+    </form>
+
+  </div>
+
+</body>
+</html>
