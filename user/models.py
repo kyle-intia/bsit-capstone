@@ -14,11 +14,11 @@ class CustomUserManager(BaseUserManager):
     Custom user model manager where email is the unique identifier.
     """
     def create_user(self, email, password=None, ip_address=None, **extra_fields):
-        
+
+     
         if not email:
             raise ValueError("Email is required")
         email = self.normalize_email(email)
-
         user = self.model(email=email, **extra_fields)
        
         if password:
@@ -67,6 +67,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(null=True, blank=True, max_length=30)
     email = models.EmailField(unique=True, null=False, blank=False) # used only for staff/admin users
     bday = models.DateField(null=True, blank=True)
+
     dp = ContentTypeRestrictedFileField(upload_to='dp/', content_types=['image/png', 'image/jpeg'], 
                                         max_upload_size=5242880,  null=True, blank=True) # display profile
 

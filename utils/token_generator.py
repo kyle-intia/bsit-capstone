@@ -2,6 +2,7 @@ import jwt
 from datetime import datetime, timedelta
 from django.conf import settings
 from django.core.mail import send_mass_mail, send_mail
+
 from django.template.loader import render_to_string
 from .common import get_name_from_email
 from django.urls import reverse
@@ -13,6 +14,7 @@ def create_verification_token(email):
     }
     token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
     return token
+
 
 def send_token(email):
     """
@@ -68,5 +70,4 @@ def send_reset_token(user, request=None):
         recipient_list=[user.email],
         html_message=message,
     )
-
 

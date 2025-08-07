@@ -42,6 +42,7 @@ class CustomUserAdmin(UserAdmin, admin.ModelAdmin):
     form = CustomUserChangeForm
     add_form = CustomUserCreationForm
 
+
     list_display = ['email', 'name', 'id', 'is_active', 'is_staff', 'is_admin', 'bday', 'date_joined']
     list_filter = ['date_joined', 'last_login', 'is_active', 'is_staff', 'is_admin']
 

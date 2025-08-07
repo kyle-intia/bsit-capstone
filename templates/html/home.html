@@ -41,6 +41,7 @@
                             tw-place-content-center
                             tw-place-items-center
                             tw max-md:!tw-mt-10">
+
                     <div class="tw-rounded-lg tw-overflow-clip  ">
                         <img src="{% static './assets/images/home/heropage_mascotman.png' %}" 
                                 alt="dashboard" class="tw-w-full tw-h-full">
@@ -51,7 +52,7 @@
                 </div>
 
             </div>
-            
+
         
     </section>
 
@@ -129,7 +130,15 @@
                     tw-overflow-hidden
                     "
                     >
-       
+        <div class="tw-flex tw-flex-col tw-place-items-center tw-gap-2">
+            <h3 class="tw-text-4xl max-md:tw-text-3xl">Make it yours</h3>
+            <a class="btn tw-mt-4 tw-rounded-xl hover:tw-scale-[1.05] tw-duration-[0.3s]"
+                href="https://github.com/PaulleDemon/Django-website-template"
+            >
+                Get now!
+            </a>
+        </div>
+
     </section>
 
     <section class="tw-mt-5 tw-w-full tw-flex tw-flex-col tw-p-[5%]
@@ -200,9 +209,49 @@
     
        
     </section>
-    
 
-    
+    <section class="tw-w-full tw-flex 
+                    tw-flex-col
+                    tw-place-content-center 
+                    tw-px-[10%]
+                   
+                    tw-gap-[10%]
+                    tw-place-items-center
+                    ">
+
+        <div class="tw-w-full tw-place-content-center 
+                    tw-flex tw-flex-col tw-gap-3
+                    tw-place-items-center
+                    ">
+
+            <h2 class="tw-text-3xl max-md:tw-text-2xl primary-text-color">Special Newsletter signup</h2>
+            <h2 class="tw-text-xl max-md:tw-text-lg">Get to know about our future templates</h2>
+            
+            {% comment %} {% include "html/newsletter/form.html" %} {% endcomment %}
+
+            <div class="input tw-flex tw-h-[50px]  tw-p-2 
+                            tw-overflow-hidden tw-place-items-center ">
+                            
+                <input type="email" class="tw-w-full tw-h-full tw-bg-transparent tw-outline-none tw-px-3"
+                        placeholder="email"
+                        name="email"
+                        required
+                    >
+                
+                <button class="btn tw-h-[35px] 
+                            
+                            tw-duration-[0.3s]
+                            tw-transition-colors
+                            " 
+                            type="submit"
+                            >
+                    Signup
+                </button>   
+            </div>
+        </div>
+
+    </section>
+
 
     <div class="tw-fixed
                 tw-top-[50%] tw-translate-y-[-50%]

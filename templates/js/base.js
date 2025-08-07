@@ -90,19 +90,3 @@ function responsive() {
 
 window.addEventListener("resize", responsive)
 
-
-
-  const button = document.getElementById('dropdownButton');
-  const menu = document.getElementById('dropdownMenu');
-
-  button.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
-
-  // Optional: Close dropdown when clicking outside
-  document.addEventListener('click', (event) => {
-    if (!button.contains(event.target) && !menu.contains(event.target)) {
-      menu.classList.add('hidden');
-    }
-  });
-

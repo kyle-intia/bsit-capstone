@@ -33,6 +33,7 @@ def login_view(request):
         return redirect('home')
 
     if request.method == "GET":
+
         return render(request, 'login.html')
 
     email = request.POST["email"]
@@ -52,8 +53,8 @@ def login_view(request):
         
         return redirect('home')
 
-    return render(request, 'login.html', {'error': f'Invalid email or password'})
 
+    return render(request, 'login.html', {'error': f'Invalid email or password'})
 
 def logout_view(request):
     logout(request)
@@ -65,7 +66,7 @@ def logout_view(request):
 def signup_view(request):
     if request.method == "GET":
         return render(request, 'signup.html')
-    
+
     else:   
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
@@ -86,8 +87,8 @@ def signup_view(request):
 
         errors = [f'{list(error[x][0])[0]}' for x in error]
        
-        return render(request, 'signup.html', context={'errors': errors})
 
+        return render(request, 'signup.html', context={'errors': errors})
 
 def verification_alert(request):
     """
@@ -144,6 +145,24 @@ def verify_email(request):
 
     except (jwt.DecodeError, Exception):
         return render(request, 'email-verification.html', context={'error': 'Unknown error occurred, request a new token'})
+
+
+# Pre-Assessment   
+def pre_intro(request):
+    return render(request, 'html/preassessment/pre_intro.html')
+
+def pre_transpo(request):
+    return render(request, 'html/preassessment/pre_transpo.html')
+
+def pre_food(request):
+    return render(request, 'html/preassessment/pre_food.html')
+
+def pre_elec(request):
+    return render(request, 'html/preassessment/pre_elec.html')
+
+def pre_submit(request):
+    return render(request, 'html/preassessment/pre_submit.html')
+
     
 def forgot_password_request(request):
     """

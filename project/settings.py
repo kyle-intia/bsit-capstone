@@ -71,7 +71,6 @@ if not DEBUG:
     CORS_ORIGIN_WHITELIST = env('ALLOWED_CORS').replace(' ', '').split(',')
     CSRF_TRUSTED_ORIGINS = env('ALLOWED_CORS').replace(' ', '').split(',')
 
-
 PROJECT_TITLE = 'EcoSteps' # name of the project
 
 if DEBUG:
@@ -119,8 +118,6 @@ AUTH_USER_MODEL = "user.User"
 LOGIN_REDIRECT_URL = '/'
 
 TAILWIND_APP_NAME = 'styling'
-NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
-
 
 INTERNAL_IPS = [
     "127.0.0.1",
@@ -144,6 +141,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'project.urls'
 
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -151,7 +149,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'ecosteps.pup@gmail.com'
 EMAIL_HOST_PASSWORD = 'wmnb acxq lrec zpga'  
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
 
 TEMPLATES = [
     {
@@ -204,7 +201,6 @@ else:
                 'PORT': '5432',
         }
     }
-
     DATABASES  = {
                     'default':dj_database_url.config(default=env('POSTGRES_URL')),   
                 }
@@ -283,53 +279,54 @@ else:
     GS_QUERYSTRING_AUTH = True  # Optional: Enable querystring authentication
     GS_FILE_OVERWRITE = False # prevent overwriting
 
-
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'filters': {
-#         'require_debug_false': {
-#             '()': 'django.utils.log.RequireDebugFalse'
-#         }
-#     },
-#     'formatters': {
-#         'verbose': {
-#             'format': '[contactor] %(levelname)s %(asctime)s %(message)s'
-#         },
-#     },
-#     'handlers': {
-#         # Send all messages to console
-#         'console': {
-#             'level': 'DEBUG',
-#             'class': 'logging.StreamHandler',
-#         },
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'formatters': {
+        'verbose': {
+            'format': '[contactor] %(levelname)s %(asctime)s %(message)s'
+        },
+    },
+    'handlers': {
+        # Send all messages to console
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
         
-#         'celery': {
-#             'level': 'DEBUG',
-#             'class': 'logging.StreamHandler',
-#         },
+        'celery': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
 
-#         # Send info messages to syslog
-#         # 'syslog':{
-#         #     'level':'INFO',
-#         #     'class': 'logging.handlers.SysLogHandler',
-#         #     'facility': SysLogHandler.LOG_LOCAL2,
-#         #     'address': '/dev/log',
-#         #     'formatter': 'verbose',
-#         # },
-#         # Warning messages are sent to admin emails
-#         'mail_admins': {
-#             'level': 'WARNING',
-#             'filters': ['require_debug_false'],
-#             'class': 'django.utils.log.AdminEmailHandler',
-#         },
-#     },
-#     'loggers': {
-#         # This is the "catch all" logger
-#         '': {
-#             'handlers': ['console', 'mail_admins', 'celery'],
-#             'level': 'DEBUG',
-#             'propagate': False,
-#         },
-#     }
-# }
+        # Send info messages to syslog
+        # 'syslog':{
+        #     'level':'INFO',
+        #     'class': 'logging.handlers.SysLogHandler',
+        #     'facility': SysLogHandler.LOG_LOCAL2,
+        #     'address': '/dev/log',
+        #     'formatter': 'verbose',
+        # },
+        # Warning messages are sent to admin emails
+        'mail_admins': {
+            'level': 'WARNING',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler',
+        },
+    },
+    'loggers': {
+        # This is the "catch all" logger
+        '': {
+            'handlers': ['console', 'mail_admins', 'celery'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    }
+}
+
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"

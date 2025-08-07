@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Energy Usage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div class="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-8">
+    <h2 class="text-2xl font-bold mb-6">Energy Usage</h2>
+
+    <form>
+      <!-- Housing Type -->
+      <div class="mb-4">
+        <label class="block text-gray-700 font-semibold mb-2">
+          What kind of housing do you live in?
+        </label>
+        <select name="housing_type" class="w-full border border-gray-300 rounded p-2">
+          <option value="large">Large house (3+ bedrooms)</option>
+          <option value="medium">Medium house (2 bedrooms)</option>
+          <option value="small">Small house/apartment</option>
+        </select>
+      </div>
+
+      <!-- Number of People -->
+      <div class="mb-4">
+        <label class="block text-gray-700 font-semibold mb-2">
+          How many people live in your home?
+        </label>
+        <select name="housing_size" class="w-full border border-gray-300 rounded p-2">
+          <option value="large">5 or more people</option>
+          <option value="medium"> 3-4 people</option>
+          <option value="small"> 1-2 people</option>
+        </select>
+      </div>
+
+      <!-- Annual Energy Bill -->
+      <div class="mb-4">
+        <label class="block text-gray-700 font-semibold mb-2">
+          Estimated annual energy bill
+        </label>
+        <select name="energy_bill" class="w-full border border-gray-300 rounded p-2">
+          <option value="below_60000">Below ₱60,000/year</option>
+          <option value="60000_100000">₱60,000–₱100,000/year</option>
+          <option value="above_100000">Above ₱100,000/year</option>
+        </select>
+      </div>
+
+      <!-- Solar Panels -->
+      <div class="mb-6">
+        <label class="block text-gray-700 font-semibold mb-2">
+          Are there solar panels or renewable energy sources in your home?
+        </label>
+        <select name="renewables" class="w-full border border-gray-300 rounded p-2">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+          <option value="partial">Partial (e.g., solar lamps, LPG only)</option>
+        </select>
+      </div>
+
+      <!-- NEXT Button -->
+      <div class="text-right">
+        <a href="{% url 'pre_submit' %}" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded">
+          Next
+        </a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
