@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoSteps - Pre-Assessment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            max-width: 600px;
+            margin: auto;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #2e7d32;
+        }
+
+        p {
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .continue-btn {
+            background-color: #388e3c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .continue-btn:hover {
+            background-color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pre-Assessment Form for EcoSteps</h1>
+
+    <p>Please complete a short pre-assessment to help evaluate your current carbon footprint.</p>
+
+    <p>
+        The information you share in this pre-assessment will be treated with utmost confidentiality and will solely be used for sustainability and research purposes. We strictly adhere to the <strong>Data Privacy Act of 2012 (RA 10173)</strong> to ensure your personal data is protected at all times.
+    </p>
+
+    <div class="button-container">
+        <a href="{% url 'pre_transpo' %}" class="continue-btn">Continue →</a>
+    </div>
+
+</body>
+</html>
