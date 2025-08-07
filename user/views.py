@@ -33,7 +33,8 @@ def login_view(request):
         return redirect('home')
 
     if request.method == "GET":
-        return render(request, 'html/login/login.html')
+
+        return render(request, 'login.html')
 
     email = request.POST["email"]
     password = request.POST["password"]
@@ -52,8 +53,8 @@ def login_view(request):
         
         return redirect('home')
 
-    return render(request, 'html/login/login.html', {'error': f'Invalid email or password'})
 
+    return render(request, 'login.html', {'error': f'Invalid email or password'})
 
 def logout_view(request):
     logout(request)
@@ -64,8 +65,8 @@ def logout_view(request):
 @require_http_methods(["GET", "POST"])
 def signup_view(request):
     if request.method == "GET":
-        return render(request, 'html/login/signup.html')
-    
+        return render(request, 'signup.html')
+
     else:   
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
@@ -86,8 +87,8 @@ def signup_view(request):
 
         errors = [f'{list(error[x][0])[0]}' for x in error]
        
-        return render(request, 'html/login/signup.html', context={'errors': errors})
 
+        return render(request, 'signup.html', context={'errors': errors})
 
 def verification_alert(request):
     """
@@ -145,6 +146,7 @@ def verify_email(request):
     except (jwt.DecodeError, Exception):
         return render(request, 'email-verification.html', context={'error': 'Unknown error occurred, request a new token'})
 
+
 # Pre-Assessment   
 def pre_intro(request):
     return render(request, 'html/preassessment/pre_intro.html')
@@ -160,3 +162,18 @@ def pre_elec(request):
 
 def pre_submit(request):
     return render(request, 'html/preassessment/pre_submit.html')
+
+    
+def forgot_password_request(request):
+    """
+        Handle forgot password request.
+        This function should be implemented to handle the forgot password logic.
+    """
+    return render(request, 'forgot-password.html')
+
+def reset_password_form(request):
+    """
+        Handle reset password form.
+        This function should be implemented to handle the reset password logic.
+    """
+    return render(request, 'reset-password.html')

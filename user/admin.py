@@ -42,7 +42,8 @@ class CustomUserAdmin(UserAdmin, admin.ModelAdmin):
     form = CustomUserChangeForm
     add_form = CustomUserCreationForm
 
-    list_display = ['email', 'name', 'id', 'is_active', 'is_staff', 'is_admin']
+
+    list_display = ['email', 'name', 'id', 'is_active', 'is_staff', 'is_admin', 'bday', 'date_joined']
     list_filter = ['date_joined', 'last_login', 'is_active', 'is_staff', 'is_admin']
 
     ordering = ['-date_joined']
@@ -50,7 +51,7 @@ class CustomUserAdmin(UserAdmin, admin.ModelAdmin):
 
     fieldsets = (
         ('User details', {'fields': ('id', 'email', 'name',  "dp", 
-                                     'date_joined', 
+                                     'date_joined', 'bday'
                                      'password')}), # displays hashed password
         ('Status', {'fields': ('is_active', 'is_staff', 'is_admin', 'is_superuser')}),
         ('Authorization groups', {'fields': ('groups', 'user_permissions')}),
@@ -60,7 +61,7 @@ class CustomUserAdmin(UserAdmin, admin.ModelAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2')}
+            'fields': ('email', 'password1', 'password2', 'name', 'bday')}
         ),
     )
     list_editable = ['is_active',]

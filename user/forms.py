@@ -8,19 +8,15 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("email", )
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields.pop('password2')
-
+        fields = ("name", "email", "password1", "password2", "bday")
 
 class CustomUserChangeForm(UserChangeForm):
-
+  
     class Meta:
         model = User
-        fields = ("email",)
+        fields = ("name", "email", "bday")
 
+        
 # Pre-Assessment   
 
 class TransportationForm(forms.Form):

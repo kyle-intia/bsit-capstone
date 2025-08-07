@@ -91,7 +91,9 @@
                     ">
 
         <a class="tw-w-[50px] tw-h-[50px] tw-p-[4px]" href="{% url "home" %}">
-            <img src="{% static "assets/logos/logo1.png" %}" 
+
+            <img src="{% static "assets/logos/ecosteps_logo.svg" %}" 
+
                   alt="logo" class="tw-w-full tw-h-full tw-object-contain">
 
         </a>
@@ -123,47 +125,54 @@
                     Contact us
                 </a>
             </div>
-            <div class="tw-flex tw-gap-[20px] tw-place-items-center tw-text-xl
-                         max-lg:!tw-text-white
-                         max-lg:tw-place-content-center
-                        max-lg:tw-w-full
-                         max-lg:tw-place-items-start
-                         ">
-                <a href="https://www.facebook.com/" 
-                        target="_blank" 
-                        rel="noreferrer"
-                        aria-label="facebook"
-                        class=" header-links
-                                tw-transition-colors
-                                tw-duration-[0.3s]
-                                "
-                        >
-                    <i class="bi bi-facebook"></i>
-                </a>
+            
+            <a class="tw-w-[50px] tw-h-[50px] tw-p-[4px]" href="{% url "logout" %}">
+                <img src="{% static "assets/logos/User-Profile-PNG-Image.png" %}" 
+                  alt="logo" class="tw-w-full tw-h-full tw-object-contain">
+            </a>
+        
 
-                <a href="https://www.instagram.com/"
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label="instagram"
-                        class="header-links
-                                tw-transition-colors
-                                tw-duration-[0.3s]
-                                "
+                {% comment %} <div class="tw-flex tw-gap-[20px] tw-place-items-center tw-text-xl
+                            max-lg:!tw-text-white
+                            max-lg:tw-place-content-center
+                            max-lg:tw-w-full
+                            max-lg:tw-place-items-start
+                            ">
+                    <a href="https://www.facebook.com/" 
+                            target="_blank" 
+                            rel="noreferrer"
+                            aria-label="facebook"
+                            class=" header-links
+                                    tw-transition-colors
+                                    tw-duration-[0.3s]
+                                    "
                             >
-                    <i class="bi bi-instagram"></i>
-                </a>
-                <a href="https://github.com/PaulleDemon"
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label="github"
-                        class="header-links
-                                tw-transition-colors
-                                tw-duration-[0.3s]
-                                "
-                            >
-                    <i class="bi bi-github"></i>
-                </a>
-            </div>
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/"
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label="instagram"
+                            class="header-links
+                                    tw-transition-colors
+                                    tw-duration-[0.3s]
+                                    "
+                                >
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="https://github.com/PaulleDemon"
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label="github"
+                            class="header-links
+                                    tw-transition-colors
+                                    tw-duration-[0.3s]
+                                    "
+                                >
+                        <i class="bi bi-github"></i>
+                    </a>
+                </div> {% endcomment %}
         </div>
         <button class="tw-absolute tw-text-black tw-z-50 
                         tw-right-3

@@ -71,8 +71,7 @@ if not DEBUG:
     CORS_ORIGIN_WHITELIST = env('ALLOWED_CORS').replace(' ', '').split(',')
     CSRF_TRUSTED_ORIGINS = env('ALLOWED_CORS').replace(' ', '').split(',')
 
-
-PROJECT_TITLE = 'Project' # name of the project
+PROJECT_TITLE = 'EcoSteps' # name of the project
 
 if DEBUG:
     DOMAIN = "http://localhost:8000"
@@ -120,7 +119,6 @@ LOGIN_REDIRECT_URL = '/'
 
 TAILWIND_APP_NAME = 'styling'
 
-
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
@@ -143,25 +141,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'project.urls'
 
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # This is only for development
-    # EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 
-else: 
-    pass
-    # uncomment below for production emailing
-    # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # for production
-
-    # EMAIL_HOST = env('EMAIL_HOST') #eg: smtpout.secureserver.net
-    # EMAIL_PORT = 465
-
-    # EMAIL_HOST_USER = env('EMAIL_HOST_USER') # eg: info@mail.com
-    # EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-
-    # DEFAULT_FROM_EMAIL = Address(display_name=env('EMAIL_HOST_USER'), addr_spec=EMAIL_HOST_USER)
-
-    # EMAIL_USE_SSL = True
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ecosteps.pup@gmail.com'
+EMAIL_HOST_PASSWORD = 'wmnb acxq lrec zpga'  
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 TEMPLATES = [
     {
@@ -204,17 +191,16 @@ if DEBUG:
     }
 
 else:
-    # DATABASES = {
-    #         'default': {
-    #             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #             'NAME': env.get_value('POSTGRES_DATABASE'), # use env file
-    #             'USER': env.get_value('POSTGRES_USER'),
-    #             'PASSWORD': env.get_value('POSTGRES_PASSWORD'),
-    #             'HOST': env.get_value('POSTGRES_HOST'),
-    #             'PORT': '5432',
-    #     }
-    # }
-
+    DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                'NAME': env.get_value('POSTGRES_DATABASE'), # use env file
+                'USER': env.get_value('POSTGRES_USER'),
+                'PASSWORD': env.get_value('POSTGRES_PASSWORD'),
+                'HOST': env.get_value('POSTGRES_HOST'),
+                'PORT': '5432',
+        }
+    }
     DATABASES  = {
                     'default':dj_database_url.config(default=env('POSTGRES_URL')),   
                 }
@@ -292,7 +278,6 @@ else:
     GS_DEFAULT_ACL = "publicRead"  # Optional: Set ACL for public access
     GS_QUERYSTRING_AUTH = True  # Optional: Enable querystring authentication
     GS_FILE_OVERWRITE = False # prevent overwriting
-
 
 LOGGING = {
     'version': 1,

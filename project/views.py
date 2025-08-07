@@ -9,8 +9,6 @@ from django.utils.translation import gettext_lazy as _
 
 from django_ratelimit.exceptions import Ratelimited
 
-
-
 def rate_limiter_view(request, *args, **kwargs):
     return render(request, 'ratelimit.html', status=429)
 
@@ -23,7 +21,6 @@ def handler_403(request, exception=None):
     if isinstance(exception, Ratelimited):
         return HttpResponse('Sorry too many requests, please wait', status=429)
     return HttpResponseForbidden('Forbidden')
-
 
 def home_view(request):
     return render(request, 'home.html', status=200)
