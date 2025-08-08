@@ -121,7 +121,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="shortcut icon" href="{% static 'assets/logos/logo3.png' %}" type="image/png">
-{% comment %} fonts {% endcomment %}
+<!-- FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Khula:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -144,6 +144,7 @@
     {% endblock head_tags %}
 
 </head>
+<!-- BACKGORUND -->
 <body   
     style=" 
             background-color: #f3e6d1;"
@@ -174,11 +175,11 @@
                     ">
             
             <div class="tw-w-3/4 tw-max-w-md tw-text-white">
-            
-            {% comment %} <img src="{% static 'assets/images/elogo.png' %}" 
-                 class="tw-mx-auto tw-mb-4 tw-text-center tw-h-auto tw-block" alt="Logo">
-            </img> {% endcomment %}
-            <img src="{% static 'assets/images/ecosteps.png' %}" alt="EcoSteps" class="tw-h-12 tw-mt-8" />
+
+            <!-- Logo -->
+            <div class="flex justify-center mb-2">
+            <img src="{% static 'assets/logos/logoo.png' %}"  alt="Logo" class="h-16" />
+            </div>
             <h2 style="font-family: 'Exo 2', sans-serif;" class="tw-text-center tw-text-2xl tw-font-bold tw-mb-6">CREATE NEW ACCOUNT</h2>
 
              <form
