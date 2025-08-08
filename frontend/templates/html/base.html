@@ -12,6 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="shortcut icon" href="{% static 'assets/logos/logo.png' %}" type="image/png">
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Khula:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Andika&display=swap" rel="stylesheet">
     
     <meta name="theme-color" content="#f3e6d1">
 
@@ -65,7 +69,7 @@
 </head>
     
 {% comment %} <body class="tw-min-h-[100vh]" data-bs-theme="dark"> {% endcomment %}
-<body style="background-color: #f3e6d1;" class="tw-min-h-[100vh] tw-w-full tw-flex tw-flex-col">
+<body class="tw-min-h-[100vh] tw-w-full tw-flex tw-flex-col">
     
     <div id="toast" class="tw-p-2 tw-px-4 tw-bg-black tw-h-max tw-z-[5000] tw-fixed 
                             tw-top-[5%] tw-left-[50%] tw-translate-x-[-50%] 
@@ -80,42 +84,44 @@
           <button type="button" class="bi bi-x tw-text-lg" aria-label="Close"></button>
         </div>
     </div>
-
+<!-- HEADER -->
     <header class="tw-flex tw-w-full tw-z-20
-                    tw-h-[60px]  
+                    {% comment %} tw-h-[60px]   {% endcomment %}
                     lg:tw-justify-around
                     tw-absolute tw-top-0 tw-px-[10%]
                     max-lg:tw-mr-auto
-                    tw-bg-white
-                    tw-text-black
-                    ">
-
-        <a class="tw-w-[50px] tw-h-[50px] tw-p-[4px]" href="{% url "home" %}">
-            <img src="{% static "assets/logos/logo1.png" %}" 
-                  alt="logo" class="tw-w-full tw-h-full tw-object-contain">
+                    "
+            style="background-color: #f3e6d1;
+                    height: 90px;
+            ">
+        <!-- LOGO -->
+        <a class="tw-w-[60px] tw-h-[60px] tw-p-[5px]" href="{% url "home" %}">
+            <img src="{% static "assets/logos/logo.png" %}" 
+                  alt="logo" class="tw-w-full tw-h-full tw-object-contain tw-mt-4">
 
         </a>
         <div class="collapsable-header animated-collapse max-lg:tw-shadow-md"
                     id="collapsed-header-items"
                     >
             <div class=" tw-w-max
-                            tw-text-base 
+                            tw-text-base
                             tw-flex tw-gap-5 tw-h-full lg:tw-mx-auto
                             lg:tw-place-items-center 
                             max-lg:tw-place-items-end
                             max-lg:tw-flex-col
                             max-lg:tw-mt-[50px]
                             max-lg:tw-gap-5
-                            tw-text-black
-                        ">
+                            tw-text-white
+                        "
+                 style="font-family: 'Andika', sans-serif; margin-right: 30px;">
                     
                 <a class="header-links" href="{% url "home" %}">
-                    About us
+                    Carbon Footprint
                 </a>
                 <a class="header-links" href="{% url "blogs" %}"
                         rel="noreferrer"
                         >
-                    Blogs
+                    Eco Challenge
                 </a>
                 <a class="header-links" href="{% url "contact-us" %}"
                         rel="noreferrer"

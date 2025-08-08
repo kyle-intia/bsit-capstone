@@ -4,7 +4,13 @@
 {% load custom_tags %}
 
 {% block content %}
-
+<body style="background-image: url('{% static 'assets/images/home/home_bg.png' %}');
+            height: 100vh;
+            width: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            ">
     <section class="tw-w-full tw-min-h-[100vh]  tw-max-w-[100vw]
                         tw-flex tw-flex-col tw-overflow-hidden tw-relative"
                         id="hero-section"
@@ -17,48 +23,52 @@
 
                 <div class="tw-flex tw-flex-col tw-place-content-center tw-max-w-[650px] tw-min-w-[550px] 
                             max-md:tw-min-w-[300px]">
-                    <h1 class="tw-text-6xl tw-font-semibold tw-uppercase 
-                            tw-leading-normal max-md:tw-text-5xl max-md:tw-leading-[70px]">
-                        Supercharge your Django 
-                        apps with Templates 🚀
+                    <h1 class="tw-text-6xl tw-font-bold 
+                            tw-leading-normal max-md:tw-text-5xl max-md:tw-leading-[70px]"
+                        style="font-family: 'Exo 2', sans-serif; color: #333333;">
+                        EcoSteps: Carbon Footprint Tracker
                     </h1>
-                    <div class="tw-mt-5 tw-p-2 tw-text-justify max-md:tw-max-w-full">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quasi consequuntur provident, aperiam blanditiis quia quae fugit commodi aliquam fugiat earum repellendus impedit ex perspiciatis iste a, sint possimus cupiditate odio? Delectus, recusandae! Iure porro illum sint labore, expedita inventore sapiente fugit, consectetur totam nemo temporibus sunt eligendi, odio esse!
+                    <div class="tw-mt-5 tw-p-2 tw-text-justify max-md:tw-max-w-full"
+                         style="font-family: 'Khula', sans-serif; color: #333333;">
+                        EcoSteps is a web-based platform designed to help individuals in the Philippines 
+                        monitor and reduce their carbon emissions. By logging simple daily activities like 
+                        commuting, energy use, and food consumption, you can understand your impact on the planet. 
+                        Using real-time feedback, gamified challenges, and personalized recommendations, 
+                        EcoSteps makes sustainable living accessible and rewarding.
+                        Small changes. Big impact. Let’s take eco-steps together!
+
                     </div>
                     
-                    {% comment %} <a href="https://github.com/PaulleDemon/Django-website-template" 
-                                        class="btn tw-mt-5 tw-ml-auto 
-                                                tw-duration-[0.3s]
-                                                tw-transition-transform
-                                                hover:tw-translate-x-2
-                                                ">
-                        <span>Get started</span>
-                        <i class="bi bi-arrow-right"></i>
-                    </a>
-                </div> {% endcomment %}
-{% comment %} yna {% endcomment %}
                 <a href="{% url "blogs" %}" 
                                         class="btn tw-mt-5 tw-ml-auto 
                                                 tw-duration-[0.3s]
                                                 tw-transition-transform
                                                 hover:tw-translate-x-2
-                                                ">
-                        <span>Get started</span>
+                                                hover:tw-underline
+                                                {% comment %} tw-font-bold {% endcomment %}
+                                                "
+                                        style="font-family: 'Andika', sans-serif;
+                                               background-color: #78a35d;
+                                               color: #333333;
+                                               border: 2px solid #333333;
+                                               ">
+                                        
+                        <span>GET STARTED &nbsp;</span>
                         <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
 
-                <div class="tw-max-w-[750px] 
+                <div class="tw-max-w-[650px] 
                             tw-place-content-center
                             tw-place-items-center
                             tw max-md:!tw-mt-10">
-                    <div class="tw-rounded-lg tw-overflow-clip tw-shadow-xl ">
-                        <img src="{% static './assets/images/home/dashboard.png' %}" 
+                    <div class="tw-rounded-lg tw-overflow-clip ">
+                        <img src="{% static './assets/images/home/kid.png' %}" 
                                 alt="dashboard" class="tw-w-full tw-h-full">
                     </div>
-                    <div class="tw-mt-5 tw-p-2 tw-text-justify tw-text-2xl">
+                    {% comment %} <div class="tw-mt-5 tw-p-2 tw-text-justify tw-text-2xl">
                         Code Less. Deliver More
-                    </div>
+                    </div> {% endcomment %}
                 </div>
 
             </div>
@@ -314,7 +324,7 @@
     </div>
     
 {% endblock content %}
-
+<body>
 {% block scripts %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" integrity="sha512-rd0qOHVMOcez6pLWPVFIv7EfSdGKLt+eafXh4RO/12Fgr41hDQxfGvoi1Vy55QIVcQEujUE1LQrATCLl2Fs+ag==" crossorigin="anonymous" referrerpolicy="no-referrer" />

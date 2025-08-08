@@ -41,14 +41,18 @@ header > .collapsable-header{
     align-items: center;
     min-width: fit-content;
     border-radius: 25px;
-    padding: 5px 10px;
-    transition: background-color 0.5s, color 0.5s;
+    padding: 5px 15px;
+    letter-spacing: 2px;
+    transition: transform 0.2s ease, background-color 0.5s, color 0.5s;
+    background-color: #3c6b2a;
+    box-shadow: 4px -4px 0 #78a35d;
 }
 
 
 .header-links:hover {
     color: #fff;
-    background-color: #000;
+    text-decoration: underline;
+    transform: scale(1.03); /* zoom in by 5% */
 }
 
 
