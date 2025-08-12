@@ -1,7 +1,0 @@
-<h3>Resend Confirmation</h3>
-{% if error %}<p style="color:red">{{ error }}</p>{% endif %}
-<form method="post">
-  {% csrf_token %}
-  <input type="email" name="email" placeholder="Enter your email">
-  <input type="submit" value="Resend">
-</form>
